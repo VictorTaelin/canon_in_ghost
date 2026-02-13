@@ -2,13 +2,13 @@
 
 ## Repo Identity
 - Local path: `/Users/v/t/dev/canon/codex`
-- GitHub repo: `https://github.com/VictorTaelin/canon`
-- GitHub Pages URL: `https://victortaelin.github.io/canon/`
+- GitHub repo: `https://github.com/VictorTaelin/canon_in_ghost`
+- GitHub Pages URL: `https://victortaelin.github.io/canon_in_ghost/`
 - Default branch: `main`
 - Current app name in UI/title: `canon_in_ghost`
 
 ## Purpose
-This repo contains a single-page HTML5/Web Audio app that plays Johann Pachelbel's Canon in D as a 3-violin canon (entries staggered by 2 bars) with:
+This repo contains a single-page HTML5/Web Audio app that plays Johann Pachelbel's Canon in D (3 violins + basso continuo) with:
 - Theremin-like synth timbre
 - FL/Fruity-Loops-style piano-roll visualization
 - Auto-follow scrolling under a fixed centered playhead
@@ -36,20 +36,20 @@ This repo contains a single-page HTML5/Web Audio app that plays Johann Pachelbel
 
 ## Canon Data Model
 `score-data.js` defines `SCORE_DATA`:
-- `title`: `Canon in D (Three Violins Canon)`
+- `title`: `Canon in D (Three Violins and Basso Continuo)`
 - `composer`: `Johann Pachelbel`
 - `tempo`: `55`
 - `timeSignature`: `[4,4]`
-- `totalBeats`: `217`
-- `midiRange`: `[55,86]`
+- `totalBeats`: `225`
+- `midiRange`: `[38,86]`
 - `notes`: array of `[startBeat, durationBeat, midiNote, voiceId]`
 
 Current stats:
-- Total notes: `1731`
-- Voices: `1,2,3`
-- Voice counts: `593`, `577`, `561`
-- Voice entries start at beats: `0`, `8`, `16`
-- Canon offset: exactly `+8` beats (2 bars in 4/4)
+- Total notes: `1956`
+- Voices: `1,2,3,4` (violin I/II/III + basso continuo)
+- Voice counts: `593`, `577`, `561`, `225`
+- Voice entries start at beats: `8`, `16`, `24` (violins), bass at beat `0`
+- Canon offset between violin entries: exactly `+8` beats (2 bars in 4/4)
 
 ## Source Provenance and References
 Primary score/data references used during development:
@@ -138,7 +138,7 @@ Chronological summary of the core collaboration decisions:
 - `score-data.js`: canonical note events
 
 Reference/source artifacts kept in repo:
-- `canon_2047_mids.zip`: Mutopia 3-violin MIDI zip
+- `canon_2047_mids.zip`: Mutopia 3-violin + basso MIDI zip
 - `canon_2047_mids/`: extracted MIDI files
 - `mutopia_CanonInD.ly`: solo Canon LilyPond file
 - `mutopia_CanonInD.mid`: solo Canon MIDI file
@@ -158,7 +158,7 @@ Reference/source artifacts kept in repo:
 
 ### Deployment
 - GitHub Pages configured from `main` branch, root path `/`
-- Site URL: `https://victortaelin.github.io/canon/`
+- Site URL: `https://victortaelin.github.io/canon_in_ghost/`
 - Push to `main` triggers Pages rebuild
 
 ## Dev Workflow Quick Commands
@@ -180,12 +180,12 @@ git push
 
 Check Pages build:
 ```bash
-gh api 'repos/VictorTaelin/canon/pages/builds?per_page=1'
+gh api 'repos/VictorTaelin/canon_in_ghost/pages/builds?per_page=1'
 ```
 
 ## Notes for Future Agents
 - Treat `score-data.js` as source-of-truth runtime score data.
-- If regenerating score data, preserve 3-voice offset requirement (`0/+8/+16` beats).
+- If regenerating score data, preserve original instrumentation (3 violins + basso continuo) and 2-bar violin entry offsets.
 - Keep UI minimal unless explicitly requested otherwise.
 - Keep playhead fixed centered; scroll sheet instead.
 - Keep note rail fixed horizontally and vertically aligned with roll rows.

@@ -227,7 +227,8 @@ output {
 #rollViewport {
   grid-column: 2;
   position: relative;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
   border-top: 1px solid #d8ceb2;
   scrollbar-color: #b8b099 #f0ead7;
   scrollbar-width: thin;
