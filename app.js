@@ -22,116 +22,154 @@
   };
   const VOICE_TIMBRES = {
     1: {
-      gain: 0.152,
-      pan: -0.24,
-      detuneCents: [-6.4, 4.1],
-      glide: 0.052,
-      overtoneType: "triangle",
-      overtoneRatio: 2.0,
-      overtoneGain: 0.032,
-      overtoneGainLow: 0.046,
-      vibratoRate: 5.0,
-      vibratoDepth: 0.0038,
-      vibratoDelayRatio: 0.27,
-      driftRate: 0.17,
-      driftDepth: 0.00074,
-      highpassHz: 108,
-      lowpassMul: 2.36,
-      lowpassMin: 1500,
+      gain: 0.132,
+      pan: -0.3,
+      detuneCents: [-4.8, 2.8],
+      glide: 0.064,
+      coreType: "triangle",
+      layerType: "sine",
+      shimmerType: "sine",
+      shimmerRatio: 2.0,
+      shimmerGain: 0.04,
+      shimmerGainLow: 0.056,
+      vibratoRate: 4.8,
+      vibratoDepth: 0.0032,
+      vibratoDelayRatio: 0.31,
+      driftRate: 0.14,
+      driftDepth: 0.00058,
+      highpassHz: 98,
+      lowpassMul: 2.55,
+      lowpassMin: 1450,
       lowpassMax: 4300,
-      lowpassPeakMul: 1.33,
-      lowpassPeakMin: 1900,
-      lowpassPeakMax: 5600,
-      lowpassQ: 0.78,
-      presenceHz: 1120,
-      presenceGain: 3.0,
-      airHz: 3100,
-      airGain: -2.5,
-      shaperDrive: 1.34,
+      lowpassPeakMul: 1.2,
+      lowpassPeakMin: 1800,
+      lowpassPeakMax: 5300,
+      lowpassQ: 0.68,
+      vowelHz: 910,
+      vowelQ: 0.95,
+      vowelGain: 2.8,
+      airHz: 3400,
+      airGain: -1.9,
+      shaperDrive: 1.2,
+      attackMul: 0.19,
+      attackMin: 0.018,
+      attackMax: 0.085,
+      releaseMul: 0.53,
+      releaseMin: 0.16,
+      releaseMax: 0.5,
     },
     2: {
-      gain: 0.145,
+      gain: 0.129,
       pan: -0.08,
-      detuneCents: [-5.1, 3.2],
-      glide: 0.048,
-      overtoneType: "triangle",
-      overtoneRatio: 2.0,
-      overtoneGain: 0.028,
-      overtoneGainLow: 0.041,
-      vibratoRate: 5.26,
-      vibratoDepth: 0.0035,
-      vibratoDelayRatio: 0.25,
-      driftRate: 0.2,
-      driftDepth: 0.00069,
-      highpassHz: 114,
-      lowpassMul: 2.28,
-      lowpassMin: 1450,
+      detuneCents: [-3.9, 2.5],
+      glide: 0.059,
+      coreType: "triangle",
+      layerType: "sine",
+      shimmerType: "sine",
+      shimmerRatio: 2.0,
+      shimmerGain: 0.037,
+      shimmerGainLow: 0.05,
+      vibratoRate: 5.05,
+      vibratoDepth: 0.003,
+      vibratoDelayRatio: 0.29,
+      driftRate: 0.16,
+      driftDepth: 0.00056,
+      highpassHz: 106,
+      lowpassMul: 2.42,
+      lowpassMin: 1420,
       lowpassMax: 4100,
-      lowpassPeakMul: 1.3,
-      lowpassPeakMin: 1850,
-      lowpassPeakMax: 5400,
-      lowpassQ: 0.76,
-      presenceHz: 1060,
-      presenceGain: 2.6,
-      airHz: 3000,
-      airGain: -2.3,
-      shaperDrive: 1.3,
+      lowpassPeakMul: 1.18,
+      lowpassPeakMin: 1760,
+      lowpassPeakMax: 5200,
+      lowpassQ: 0.66,
+      vowelHz: 1020,
+      vowelQ: 1.0,
+      vowelGain: 2.55,
+      airHz: 3250,
+      airGain: -1.85,
+      shaperDrive: 1.18,
+      attackMul: 0.185,
+      attackMin: 0.017,
+      attackMax: 0.082,
+      releaseMul: 0.52,
+      releaseMin: 0.15,
+      releaseMax: 0.48,
     },
     3: {
-      gain: 0.138,
-      pan: 0.18,
-      detuneCents: [-4.2, 5.0],
-      glide: 0.045,
-      overtoneType: "triangle",
-      overtoneRatio: 2.03,
-      overtoneGain: 0.036,
-      overtoneGainLow: 0.052,
-      vibratoRate: 5.58,
-      vibratoDepth: 0.0041,
-      vibratoDelayRatio: 0.23,
-      driftRate: 0.23,
-      driftDepth: 0.00078,
-      highpassHz: 120,
-      lowpassMul: 2.42,
-      lowpassMin: 1550,
-      lowpassMax: 4500,
-      lowpassPeakMul: 1.36,
-      lowpassPeakMin: 1950,
-      lowpassPeakMax: 5750,
-      lowpassQ: 0.8,
-      presenceHz: 1210,
-      presenceGain: 3.3,
-      airHz: 3250,
-      airGain: -2.7,
-      shaperDrive: 1.38,
+      gain: 0.126,
+      pan: 0.22,
+      detuneCents: [-4.2, 3.8],
+      glide: 0.056,
+      coreType: "triangle",
+      layerType: "sine",
+      shimmerType: "sine",
+      shimmerRatio: 2.02,
+      shimmerGain: 0.045,
+      shimmerGainLow: 0.06,
+      vibratoRate: 5.3,
+      vibratoDepth: 0.00345,
+      vibratoDelayRatio: 0.27,
+      driftRate: 0.18,
+      driftDepth: 0.0006,
+      highpassHz: 114,
+      lowpassMul: 2.62,
+      lowpassMin: 1520,
+      lowpassMax: 4550,
+      lowpassPeakMul: 1.23,
+      lowpassPeakMin: 1880,
+      lowpassPeakMax: 5600,
+      lowpassQ: 0.7,
+      vowelHz: 1160,
+      vowelQ: 0.98,
+      vowelGain: 2.95,
+      airHz: 3500,
+      airGain: -2.0,
+      shaperDrive: 1.22,
+      attackMul: 0.18,
+      attackMin: 0.016,
+      attackMax: 0.08,
+      releaseMul: 0.51,
+      releaseMin: 0.145,
+      releaseMax: 0.47,
     },
     4: {
-      gain: 0.180,
-      pan: 0,
-      detuneCents: [-2.1, 1.5],
-      glide: 0.038,
-      overtoneType: "triangle",
-      overtoneRatio: 1.0,
-      overtoneGain: 0.2,
-      overtoneGainLow: 0.27,
-      vibratoRate: 4.25,
-      vibratoDepth: 0.00195,
-      vibratoDelayRatio: 0.35,
-      driftRate: 0.11,
-      driftDepth: 0.00043,
-      highpassHz: 28,
-      lowpassMul: 4.2,
-      lowpassMin: 320,
-      lowpassMax: 1900,
-      lowpassPeakMul: 1.24,
-      lowpassPeakMin: 380,
-      lowpassPeakMax: 2500,
-      lowpassQ: 0.84,
-      presenceHz: 760,
-      presenceGain: 2.6,
-      airHz: 2100,
-      airGain: -2.2,
-      shaperDrive: 1.58,
+      gain: 0.168,
+      pan: 0.03,
+      detuneCents: [-1.6, 1.1],
+      glide: 0.046,
+      coreType: "sine",
+      layerType: "triangle",
+      shimmerType: "sine",
+      shimmerRatio: 1.0,
+      shimmerGain: 0.13,
+      shimmerGainLow: 0.16,
+      subRatio: 0.5,
+      subGain: 0.2,
+      vibratoRate: 3.9,
+      vibratoDepth: 0.0013,
+      vibratoDelayRatio: 0.38,
+      driftRate: 0.09,
+      driftDepth: 0.00035,
+      highpassHz: 24,
+      lowpassMul: 3.25,
+      lowpassMin: 250,
+      lowpassMax: 1450,
+      lowpassPeakMul: 1.15,
+      lowpassPeakMin: 320,
+      lowpassPeakMax: 2000,
+      lowpassQ: 0.86,
+      vowelHz: 530,
+      vowelQ: 0.92,
+      vowelGain: 1.6,
+      airHz: 1700,
+      airGain: -2.9,
+      shaperDrive: 1.26,
+      attackMul: 0.23,
+      attackMin: 0.024,
+      attackMax: 0.11,
+      releaseMul: 0.58,
+      releaseMin: 0.24,
+      releaseMax: 0.66,
     },
   };
 
@@ -200,6 +238,38 @@
     return (x - Math.floor(x)) * 2 - 1;
   }
 
+  function isNear(value, target, epsilon = 0.03) {
+    return Math.abs(value - target) <= epsilon;
+  }
+
+  function metricalAccent(beat) {
+    const beatInBar = ((beat % 4) + 4) % 4;
+    if (isNear(beatInBar, 0)) {
+      return 1.08;
+    }
+    if (isNear(beatInBar, 2)) {
+      return 1.01;
+    }
+    if (isNear(beatInBar, 1) || isNear(beatInBar, 3)) {
+      return 0.965;
+    }
+    return 0.94;
+  }
+
+  function phraseDynamics(beat) {
+    const cycleBeats = 32;
+    const phase = (((beat % cycleBeats) + cycleBeats) % cycleBeats) / cycleBeats;
+    return 0.94 + 0.11 * Math.sin(Math.PI * phase);
+  }
+
+  function noteDynamics(note, durationBeats) {
+    const accent = metricalAccent(note.t);
+    const phrase = phraseDynamics(note.t + durationBeats * 0.5);
+    const voiceBias = note.s === 4 ? 0.97 : 1.0;
+    const human = 1 + noteVariation(note, 17) * 0.03;
+    return accent * phrase * voiceBias * human;
+  }
+
   function beatToSeconds(beat) {
     return (beat * 60) / state.tempo;
   }
@@ -250,7 +320,7 @@
     return binarySearchByStart(Math.max(0, beat - MAX_SUSTAIN_BEATS));
   }
 
-  function createImpulseResponse(context, seconds = 4.0, decay = 1.8) {
+  function createImpulseResponse(context, seconds = 5.2, decay = 2.4) {
     const sampleRate = context.sampleRate;
     const length = Math.floor(sampleRate * seconds);
     const impulse = context.createBuffer(2, length, sampleRate);
@@ -258,9 +328,13 @@
     for (let c = 0; c < 2; c += 1) {
       const channel = impulse.getChannelData(c);
       for (let i = 0; i < length; i += 1) {
+        const t = i / length;
         const n = Math.random() * 2 - 1;
-        const falloff = Math.pow(1 - i / length, decay);
-        channel[i] = n * falloff;
+        const falloff = Math.pow(1 - t, decay);
+        const early = i < sampleRate * 0.12 ? (Math.random() * 2 - 1) * Math.exp(-i / (sampleRate * 0.03)) * 0.26 : 0;
+        const darkening = 1 - t * 0.5;
+        const stereoSpread = c === 0 ? 1 : 0.985;
+        channel[i] = (n * falloff * darkening + early) * stereoSpread;
       }
     }
 
@@ -279,49 +353,69 @@
     masterGain.gain.value = state.volume / 100;
 
     const outputBus = audioCtx.createGain();
-    outputBus.gain.value = 0.92;
+    outputBus.gain.value = 0.96;
+
+    const toneHighpass = audioCtx.createBiquadFilter();
+    toneHighpass.type = "highpass";
+    toneHighpass.frequency.value = 34;
+    toneHighpass.Q.value = 0.68;
+
+    const toneLowpass = audioCtx.createBiquadFilter();
+    toneLowpass.type = "lowpass";
+    toneLowpass.frequency.value = 7600;
+    toneLowpass.Q.value = 0.72;
 
     const compressor = audioCtx.createDynamicsCompressor();
-    compressor.threshold.value = -19;
-    compressor.knee.value = 18;
-    compressor.ratio.value = 2.2;
-    compressor.attack.value = 0.006;
-    compressor.release.value = 0.18;
+    compressor.threshold.value = -23;
+    compressor.knee.value = 16;
+    compressor.ratio.value = 2.5;
+    compressor.attack.value = 0.012;
+    compressor.release.value = 0.26;
+
+    const limiter = audioCtx.createDynamicsCompressor();
+    limiter.threshold.value = -4;
+    limiter.knee.value = 0;
+    limiter.ratio.value = 12;
+    limiter.attack.value = 0.002;
+    limiter.release.value = 0.09;
 
     const dryGain = audioCtx.createGain();
-    dryGain.gain.value = 0.64;
+    dryGain.gain.value = 0.58;
+
+    const reverbPreDelay = audioCtx.createDelay(0.15);
+    reverbPreDelay.delayTime.value = 0.032;
 
     const reverbInputHp = audioCtx.createBiquadFilter();
     reverbInputHp.type = "highpass";
-    reverbInputHp.frequency.value = 170;
+    reverbInputHp.frequency.value = 140;
     reverbInputHp.Q.value = 0.6;
 
     const reverbInputLp = audioCtx.createBiquadFilter();
     reverbInputLp.type = "lowpass";
-    reverbInputLp.frequency.value = 5900;
+    reverbInputLp.frequency.value = 6200;
     reverbInputLp.Q.value = 0.65;
 
     const convolver = audioCtx.createConvolver();
-    convolver.buffer = createImpulseResponse(audioCtx, 3.6, 2.15);
+    convolver.buffer = createImpulseResponse(audioCtx, 5.2, 2.4);
     const reverbGain = audioCtx.createGain();
-    reverbGain.gain.value = 0.34;
+    reverbGain.gain.value = 0.37;
 
     const chorusDelayLeft = audioCtx.createDelay(0.08);
     const chorusDelayRight = audioCtx.createDelay(0.08);
-    chorusDelayLeft.delayTime.value = 0.018;
-    chorusDelayRight.delayTime.value = 0.026;
+    chorusDelayLeft.delayTime.value = 0.014;
+    chorusDelayRight.delayTime.value = 0.021;
 
     const chorusLfoLeft = audioCtx.createOscillator();
     const chorusLfoRight = audioCtx.createOscillator();
     chorusLfoLeft.type = "sine";
     chorusLfoRight.type = "sine";
-    chorusLfoLeft.frequency.value = 0.19;
-    chorusLfoRight.frequency.value = 0.27;
+    chorusLfoLeft.frequency.value = 0.11;
+    chorusLfoRight.frequency.value = 0.16;
 
     const chorusDepthLeft = audioCtx.createGain();
     const chorusDepthRight = audioCtx.createGain();
-    chorusDepthLeft.gain.value = 0.0038;
-    chorusDepthRight.gain.value = 0.0046;
+    chorusDepthLeft.gain.value = 0.0015;
+    chorusDepthRight.gain.value = 0.0019;
 
     const chorusPanLeft = audioCtx.createStereoPanner();
     const chorusPanRight = audioCtx.createStereoPanner();
@@ -330,16 +424,34 @@
 
     const chorusTone = audioCtx.createBiquadFilter();
     chorusTone.type = "lowpass";
-    chorusTone.frequency.value = 5200;
+    chorusTone.frequency.value = 4900;
     chorusTone.Q.value = 0.65;
 
     const chorusMix = audioCtx.createGain();
-    chorusMix.gain.value = 0.2;
+    chorusMix.gain.value = 0.14;
+
+    const echoTone = audioCtx.createBiquadFilter();
+    echoTone.type = "lowpass";
+    echoTone.frequency.value = 3200;
+    echoTone.Q.value = 0.7;
+
+    const echoHighpass = audioCtx.createBiquadFilter();
+    echoHighpass.type = "highpass";
+    echoHighpass.frequency.value = 220;
+    echoHighpass.Q.value = 0.72;
+
+    const echoDelay = audioCtx.createDelay(0.5);
+    echoDelay.delayTime.value = 0.19;
+    const echoFeedback = audioCtx.createGain();
+    echoFeedback.gain.value = 0.11;
+    const echoMix = audioCtx.createGain();
+    echoMix.gain.value = 0.055;
 
     masterGain.connect(dryGain);
     dryGain.connect(outputBus);
 
-    masterGain.connect(reverbInputHp);
+    masterGain.connect(reverbPreDelay);
+    reverbPreDelay.connect(reverbInputHp);
     reverbInputHp.connect(reverbInputLp);
     reverbInputLp.connect(convolver);
     convolver.connect(reverbGain);
@@ -354,13 +466,24 @@
     chorusTone.connect(chorusMix);
     chorusMix.connect(outputBus);
 
+    masterGain.connect(echoTone);
+    echoTone.connect(echoHighpass);
+    echoHighpass.connect(echoDelay);
+    echoDelay.connect(echoFeedback);
+    echoFeedback.connect(echoDelay);
+    echoDelay.connect(echoMix);
+    echoMix.connect(outputBus);
+
     chorusLfoLeft.connect(chorusDepthLeft);
     chorusDepthLeft.connect(chorusDelayLeft.delayTime);
     chorusLfoRight.connect(chorusDepthRight);
     chorusDepthRight.connect(chorusDelayRight.delayTime);
 
-    outputBus.connect(compressor);
-    compressor.connect(audioCtx.destination);
+    outputBus.connect(toneHighpass);
+    toneHighpass.connect(toneLowpass);
+    toneLowpass.connect(compressor);
+    compressor.connect(limiter);
+    limiter.connect(audioCtx.destination);
 
     const startupTime = audioCtx.currentTime + 0.01;
     chorusLfoLeft.start(startupTime);
@@ -408,23 +531,31 @@
     }
 
     const now = audioCtx.currentTime;
-    const safeStart = Math.max(startTime, now + 0.002);
-    const durSec = Math.max(0.055, (durationBeats * 60) / state.tempo * 0.998);
-    const isShort = durSec < 0.24;
+    const timbre = VOICE_TIMBRES[note.s] || VOICE_TIMBRES[1];
     const isBass = note.s === 4;
+    const beatInBar = ((note.t % 4) + 4) % 4;
+    const strongBeat = isNear(beatInBar, 0) || isNear(beatInBar, 2);
+    const microTiming = noteVariation(note, 31) * (isBass ? 0.0024 : strongBeat ? 0.0018 : 0.0052);
+    const safeStart = Math.max(startTime + microTiming, now + 0.004);
+    const durSec = Math.max(0.065, (durationBeats * 60) / state.tempo * (isBass ? 1.02 : 1.015));
+    const isShort = durSec < 0.24;
     const noteEnd = safeStart + durSec;
     const attackTime = isShort
-      ? clamp(durSec * (isBass ? 0.29 : 0.24), isBass ? 0.02 : 0.013, isBass ? 0.05 : 0.04)
-      : clamp(durSec * (isBass ? 0.22 : 0.18), isBass ? 0.03 : 0.022, isBass ? 0.1 : 0.08);
+      ? clamp(
+          durSec * (timbre.attackMul + 0.03),
+          timbre.attackMin,
+          Math.min(timbre.attackMax, isBass ? 0.058 : 0.046)
+        )
+      : clamp(durSec * timbre.attackMul, timbre.attackMin, timbre.attackMax);
     const releaseTime = isShort
-      ? (isBass ? 0.14 : 0.1)
-      : clamp(durSec * (isBass ? 0.47 : 0.4), isBass ? 0.2 : 0.13, isBass ? 0.42 : 0.36);
-    const stopTime = noteEnd + Math.max(0.16, releaseTime * 2.5);
+      ? clamp(timbre.releaseMin * 0.9, 0.11, 0.34)
+      : clamp(durSec * timbre.releaseMul, timbre.releaseMin, timbre.releaseMax);
+    const stopTime = noteEnd + Math.max(0.2, releaseTime * 2.3);
     const freq = midiToHz(note.m);
-    const timbre = VOICE_TIMBRES[note.s] || VOICE_TIMBRES[1];
     const profileSpread = noteVariation(note, 1);
     const vibratoSpread = noteVariation(note, 2);
     const driftSpread = noteVariation(note, 3);
+    const dynamic = noteDynamics(note, durationBeats);
 
     const osc1 = audioCtx.createOscillator();
     const osc2 = audioCtx.createOscillator();
@@ -432,10 +563,12 @@
     const osc1Gain = audioCtx.createGain();
     const osc2Gain = audioCtx.createGain();
     const osc3Gain = audioCtx.createGain();
+    const subOsc = timbre.subGain ? audioCtx.createOscillator() : null;
+    const subGain = subOsc ? audioCtx.createGain() : null;
     const shaper = createWaveshaper(audioCtx, timbre.shaperDrive);
     const highpass = audioCtx.createBiquadFilter();
     const lowpass = audioCtx.createBiquadFilter();
-    const presence = audioCtx.createBiquadFilter();
+    const vowel = audioCtx.createBiquadFilter();
     const airTrim = audioCtx.createBiquadFilter();
     const gain = audioCtx.createGain();
     const vibLfo = audioCtx.createOscillator();
@@ -445,57 +578,73 @@
     const driftDepth = audioCtx.createGain();
     const pan = typeof audioCtx.createStereoPanner === "function" ? audioCtx.createStereoPanner() : null;
 
-    const lowBoost = clamp(1.0 + (62 - note.m) * 0.02, 0.88, isBass ? 1.72 : 1.3);
-    const baseGain = timbre.gain * lowBoost;
-    const sustainTarget = baseGain * (isShort ? 0.93 : 0.88);
-    const sustainStart = Math.min(noteEnd, safeStart + attackTime + Math.min(0.02, durSec * 0.12));
+    const lowBoost = clamp(1.0 + (62 - note.m) * 0.016, 0.9, isBass ? 1.42 : 1.24);
+    const peakGain = timbre.gain * lowBoost * dynamic;
+    const sustainTarget = peakGain * (isShort ? 0.95 : isBass ? 0.84 : 0.81);
+    const sustainStart = Math.min(noteEnd, safeStart + attackTime + Math.min(0.026, durSec * 0.13));
 
     gain.gain.cancelScheduledValues(safeStart);
     gain.gain.setValueAtTime(EPSILON_GAIN, safeStart);
-    gain.gain.linearRampToValueAtTime(baseGain, safeStart + attackTime);
+    gain.gain.linearRampToValueAtTime(peakGain, safeStart + attackTime);
     gain.gain.linearRampToValueAtTime(sustainTarget, sustainStart);
-    gain.gain.setTargetAtTime(EPSILON_GAIN, noteEnd, Math.max(0.03, releaseTime * 0.45));
-    gain.gain.linearRampToValueAtTime(EPSILON_GAIN, stopTime - 0.004);
+    gain.gain.setTargetAtTime(EPSILON_GAIN, noteEnd, Math.max(0.032, releaseTime * 0.42));
+    gain.gain.linearRampToValueAtTime(EPSILON_GAIN, stopTime - 0.006);
 
-    osc1.type = "sine";
-    osc2.type = "sine";
-    osc3.type = timbre.overtoneType;
+    osc1.type = timbre.coreType || "triangle";
+    osc2.type = timbre.layerType || "sine";
+    osc3.type = timbre.shimmerType || "sine";
+    if (subOsc) {
+      subOsc.type = "sine";
+    }
 
-    const glideTime = Math.min(timbre.glide, durSec * 0.34);
+    const glideTime = Math.min(timbre.glide, durSec * 0.38);
     const detune1 = timbre.detuneCents[0] * (1 + profileSpread * 0.06);
     const detune2 = timbre.detuneCents[1] * (1 - profileSpread * 0.05);
     const targetRatio1 = centsToRatio(detune1);
-    const startRatio1 = centsToRatio(detune1 - (isBass ? 3.3 : 4.5));
     const targetRatio2 = centsToRatio(detune2);
+    const startRatio1 = centsToRatio(detune1 - (isBass ? 2.1 : 3.8));
+    const startRatio2 = centsToRatio(detune2 - (isBass ? 1.6 : 2.8));
     osc1.frequency.setValueAtTime(Math.max(18, freq * startRatio1), safeStart);
     osc1.frequency.exponentialRampToValueAtTime(Math.max(18, freq * targetRatio1), safeStart + glideTime);
-    osc2.frequency.setValueAtTime(Math.max(18, freq * targetRatio2), safeStart);
-    const overtoneRatio = timbre.overtoneRatio * (1 + profileSpread * 0.003);
-    osc3.frequency.setValueAtTime(Math.max(18, freq * overtoneRatio), safeStart);
+    osc2.frequency.setValueAtTime(Math.max(18, freq * startRatio2), safeStart);
+    osc2.frequency.exponentialRampToValueAtTime(
+      Math.max(18, freq * targetRatio2),
+      safeStart + Math.max(0.01, glideTime * 0.88)
+    );
+    const shimmerRatio = timbre.shimmerRatio * (1 + profileSpread * 0.0025);
+    osc3.frequency.setValueAtTime(Math.max(18, freq * shimmerRatio), safeStart);
+    if (subOsc && subGain) {
+      subOsc.frequency.setValueAtTime(Math.max(18, freq * timbre.subRatio), safeStart);
+    }
 
-    osc1Gain.gain.setValueAtTime(isBass ? 1.08 : 0.9, safeStart);
-    osc2Gain.gain.setValueAtTime(isBass ? 0.88 : 0.72, safeStart);
-    const overtoneLevelBase = note.m < 65 ? timbre.overtoneGainLow : timbre.overtoneGain;
-    const overtoneLevel = isShort ? overtoneLevelBase * 0.86 : overtoneLevelBase;
-    osc3Gain.gain.setValueAtTime(overtoneLevel, safeStart);
+    osc1Gain.gain.setValueAtTime(isBass ? 1.0 : 0.92, safeStart);
+    osc2Gain.gain.setValueAtTime(isBass ? 0.62 : 0.7, safeStart);
+    const shimmerLevelBase = note.m < 65 ? timbre.shimmerGainLow : timbre.shimmerGain;
+    const shimmerLevel = isShort ? shimmerLevelBase * 0.9 : shimmerLevelBase;
+    osc3Gain.gain.setValueAtTime(shimmerLevel, safeStart);
+    if (subGain) {
+      subGain.gain.setValueAtTime(timbre.subGain, safeStart);
+    }
 
     vibLfo.type = "sine";
-    vibLfo.frequency.setValueAtTime(Math.max(3.5, timbre.vibratoRate + vibratoSpread * 0.16), safeStart);
+    vibLfo.frequency.setValueAtTime(Math.max(3.0, timbre.vibratoRate + vibratoSpread * 0.16), safeStart);
     vibDepth.gain.setValueAtTime(
-      freq * timbre.vibratoDepth * state.vibratoAmount,
+      freq * timbre.vibratoDepth * state.vibratoAmount * (0.88 + dynamic * 0.09),
       safeStart
     );
 
-    vibEnv.gain.setValueAtTime(isShort ? (isBass ? 0.14 : 0.22) : 0.0, safeStart);
-    if (!isShort) {
-      const vibDelay = clamp(durSec * timbre.vibratoDelayRatio, isBass ? 0.11 : 0.08, isBass ? 0.24 : 0.18);
-      vibEnv.gain.setValueAtTime(0.0, safeStart + vibDelay * 0.45);
+    vibEnv.gain.setValueAtTime(0.0, safeStart);
+    if (isShort) {
+      vibEnv.gain.linearRampToValueAtTime(isBass ? 0.18 : 0.26, safeStart + attackTime * 0.8);
+    } else {
+      const vibDelay = clamp(durSec * timbre.vibratoDelayRatio, isBass ? 0.13 : 0.09, isBass ? 0.32 : 0.24);
+      vibEnv.gain.setValueAtTime(0.0, safeStart + vibDelay * 0.42);
       vibEnv.gain.linearRampToValueAtTime(1.0, safeStart + vibDelay);
     }
-    vibEnv.gain.setTargetAtTime(0.0, noteEnd, Math.max(0.025, releaseTime * 0.3));
+    vibEnv.gain.setTargetAtTime(0.0, noteEnd, Math.max(0.026, releaseTime * 0.3));
 
     driftLfo.type = "sine";
-    driftLfo.frequency.setValueAtTime(Math.max(0.05, timbre.driftRate + driftSpread * 0.018), safeStart);
+    driftLfo.frequency.setValueAtTime(Math.max(0.04, timbre.driftRate + driftSpread * 0.018), safeStart);
     driftDepth.gain.setValueAtTime(freq * timbre.driftDepth, safeStart);
 
     vibLfo.connect(vibDepth);
@@ -507,34 +656,31 @@
     driftDepth.connect(osc2.frequency);
 
     highpass.type = "highpass";
-    highpass.frequency.setValueAtTime(Math.max(22, timbre.highpassHz + (isBass ? 0 : profileSpread * 4)), safeStart);
-    highpass.Q.setValueAtTime(0.65, safeStart);
+    highpass.frequency.setValueAtTime(Math.max(22, timbre.highpassHz + profileSpread * (isBass ? 0.8 : 3.2)), safeStart);
+    highpass.Q.setValueAtTime(0.68, safeStart);
 
     lowpass.type = "lowpass";
-    const lowMult = note.m < 65 ? 1.2 : 1.0;
-    const baseCutoff = clamp(freq * timbre.lowpassMul * lowMult, timbre.lowpassMin, timbre.lowpassMax);
-    const peakCutoff = clamp(
-      baseCutoff * timbre.lowpassPeakMul,
-      timbre.lowpassPeakMin,
-      timbre.lowpassPeakMax
-    );
+    const lowMult = note.m < 65 ? 1.18 : 1.0;
+    const brightness = 0.94 + dynamic * 0.12;
+    const baseCutoff = clamp(freq * timbre.lowpassMul * lowMult * brightness, timbre.lowpassMin, timbre.lowpassMax);
+    const peakCutoff = clamp(baseCutoff * timbre.lowpassPeakMul, timbre.lowpassPeakMin, timbre.lowpassPeakMax);
     lowpass.frequency.setValueAtTime(baseCutoff, safeStart);
     lowpass.frequency.linearRampToValueAtTime(peakCutoff, safeStart + attackTime);
-    lowpass.frequency.setTargetAtTime(baseCutoff, noteEnd, 0.16);
+    lowpass.frequency.setTargetAtTime(baseCutoff, noteEnd, 0.18);
     lowpass.Q.setValueAtTime(timbre.lowpassQ, safeStart);
 
-    presence.type = "peaking";
-    presence.frequency.setValueAtTime(timbre.presenceHz, safeStart);
-    presence.Q.setValueAtTime(1.1, safeStart);
-    presence.gain.setValueAtTime(timbre.presenceGain + profileSpread * 0.2, safeStart);
+    vowel.type = "peaking";
+    vowel.frequency.setValueAtTime(timbre.vowelHz * (1 + profileSpread * 0.07), safeStart);
+    vowel.Q.setValueAtTime(timbre.vowelQ, safeStart);
+    vowel.gain.setValueAtTime(timbre.vowelGain + dynamic * 0.24, safeStart);
 
     airTrim.type = "peaking";
     airTrim.frequency.setValueAtTime(timbre.airHz, safeStart);
-    airTrim.Q.setValueAtTime(1.25, safeStart);
+    airTrim.Q.setValueAtTime(1.18, safeStart);
     airTrim.gain.setValueAtTime(timbre.airGain, safeStart);
 
     if (pan) {
-      pan.pan.setValueAtTime(timbre.pan, safeStart);
+      pan.pan.setValueAtTime(clamp(timbre.pan + noteVariation(note, 41) * 0.035, -0.85, 0.85), safeStart);
     }
 
     osc1.connect(osc1Gain);
@@ -543,10 +689,14 @@
     osc1Gain.connect(shaper);
     osc2Gain.connect(shaper);
     osc3Gain.connect(shaper);
+    if (subOsc && subGain) {
+      subOsc.connect(subGain);
+      subGain.connect(shaper);
+    }
     shaper.connect(highpass);
     highpass.connect(lowpass);
-    lowpass.connect(presence);
-    presence.connect(airTrim);
+    lowpass.connect(vowel);
+    vowel.connect(airTrim);
     airTrim.connect(gain);
     if (pan) {
       gain.connect(pan);
@@ -567,7 +717,7 @@
         shaper,
         highpass,
         lowpass,
-        presence,
+        vowel,
         airTrim,
         vibLfo,
         vibDepth,
@@ -577,6 +727,9 @@
         gain,
       ],
     };
+    if (subOsc && subGain) {
+      voice.nodes.push(subOsc, subGain);
+    }
     if (pan) {
       voice.nodes.push(pan);
     }
@@ -587,12 +740,18 @@
     osc1.start(safeStart);
     osc2.start(safeStart);
     osc3.start(safeStart);
+    if (subOsc) {
+      subOsc.start(safeStart);
+    }
     vibLfo.start(safeStart);
     driftLfo.start(safeStart);
 
     osc1.stop(stopTime);
     osc2.stop(stopTime);
     osc3.stop(stopTime);
+    if (subOsc) {
+      subOsc.stop(stopTime);
+    }
     vibLfo.stop(stopTime);
     driftLfo.stop(stopTime);
   }
