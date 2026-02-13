@@ -124,7 +124,7 @@
     return binarySearchByStart(Math.max(0, beat - MAX_SUSTAIN_BEATS));
   }
 
-  function createImpulseResponse(context, seconds = 2.5, decay = 2.5) {
+  function createImpulseResponse(context, seconds = 4.0, decay = 1.8) {
     const sampleRate = context.sampleRate;
     const length = Math.floor(sampleRate * seconds);
     const impulse = context.createBuffer(2, length, sampleRate);
@@ -156,19 +156,38 @@
     outputBus.gain.value = 0.9;
 
     const compressor = audioCtx.createDynamicsCompressor();
-    compressor.threshold.value = -20;
-    compressor.knee.value = 16;
-    compressor.ratio.value = 3.2;
-    compressor.attack.value = 0.003;
-    compressor.release.value = 0.15;
+    compressor.threshold.value = -18;
+    compressor.knee.value = 20;
+    compressor.ratio.value = 2.5;
+    compressor.attack.value = 0.01;
+    compressor.release.value = 0.25;
 
     const dryGain = audioCtx.createGain();
-    dryGain.gain.value = 0.85;
+    dryGain.gain.value = 0.55;
 
     const convolver = audioCtx.createConvolver();
     convolver.buffer = createImpulseResponse(audioCtx);
     const reverbGain = audioCtx.createGain();
-    reverbGain.gain.value = 0.25;
+    reverbGain.gain.value = 0.45;
+
+    const delay1 = audioCtx.createDelay(1.0);
+    delay1.delayTime.value = 0.37;
+    const delay1Gain = audioCtx.createGain();
+    delay1Gain.gain.value = 0.13;
+    const delay1Feedback = audioCtx.createGain();
+    delay1Feedback.gain.value = 0.2;
+
+    const delay2 = audioCtx.createDelay(1.0);
+    delay2.delayTime.value = 0.53;
+    const delay2Gain = audioCtx.createGain();
+    delay2Gain.gain.value = 0.08;
+    const delay2Feedback = audioCtx.createGain();
+    delay2Feedback.gain.value = 0.15;
+
+    const delayFilter = audioCtx.createBiquadFilter();
+    delayFilter.type = "lowpass";
+    delayFilter.frequency.value = 2500;
+    delayFilter.Q.value = 0.5;
 
     masterGain.connect(dryGain);
     dryGain.connect(outputBus);
@@ -177,28 +196,45 @@
     convolver.connect(reverbGain);
     reverbGain.connect(outputBus);
 
+    masterGain.connect(delay1);
+    delay1.connect(delayFilter);
+    delayFilter.connect(delay1Gain);
+    delay1Gain.connect(outputBus);
+    delay1.connect(delay1Feedback);
+    delay1Feedback.connect(delay1);
+
+    masterGain.connect(delay2);
+    delay2.connect(delay2Gain);
+    delay2Gain.connect(outputBus);
+    delay2.connect(delay2Feedback);
+    delay2Feedback.connect(delay2);
+
     outputBus.connect(compressor);
     compressor.connect(audioCtx.destination);
 
     effectInput = masterGain;
   }
 
+  function createWaveshaper(context) {
+    const shaper = context.createWaveShaper();
+    const samples = 1024;
+    const curve = new Float32Array(samples);
+    for (let i = 0; i < samples; i++) {
+      const x = (i * 2) / samples - 1;
+      curve[i] = x >= 0
+        ? 1 - Math.pow(1 - x, 1.6)
+        : -(1 - Math.pow(1 + x, 1.6));
+    }
+    shaper.curve = curve;
+    shaper.oversample = "2x";
+    return shaper;
+  }
+
   function cleanupVoice(voice) {
     if (voice.osc1) {
       voice.osc1.onended = null;
     }
-    [
-      voice.osc1,
-      voice.osc2,
-      voice.osc3,
-      voice.osc3Gain,
-      voice.vibLfo,
-      voice.vibGain,
-      voice.tremLfo,
-      voice.tremGain,
-      voice.filter,
-      voice.gain,
-    ].forEach((node) => {
+    voice.nodes.forEach((node) => {
       try {
         node.disconnect();
       } catch (_) {
@@ -218,57 +254,93 @@
       return;
     }
 
-    const durSec = Math.max(0.03, (durationBeats * 60) / state.tempo * 0.985);
-    const stopTime = startTime + durSec + 0.06;
+    const durSec = Math.max(0.05, (durationBeats * 60) / state.tempo * 0.985);
+    const isShort = durSec < 0.3;
+    const releaseTime = isShort ? Math.max(0.04, durSec * 0.2) : Math.min(0.45, durSec * 0.3);
+    const stopTime = startTime + durSec + releaseTime + 0.05;
     const freq = midiToHz(note.m);
 
     const osc1 = audioCtx.createOscillator();
     const osc2 = audioCtx.createOscillator();
     const osc3 = audioCtx.createOscillator();
     const osc3Gain = audioCtx.createGain();
+    const shaper = createWaveshaper(audioCtx);
     const filter = audioCtx.createBiquadFilter();
     const gain = audioCtx.createGain();
     const vibLfo = audioCtx.createOscillator();
     const vibGain = audioCtx.createGain();
+    const vibEnv = audioCtx.createGain();
     const tremLfo = audioCtx.createOscillator();
     const tremGain = audioCtx.createGain();
 
-    const baseGain = note.s === 1 ? 0.2 : note.s === 2 ? 0.18 : 0.17;
-    const attackTime = Math.min(0.08, durSec * 0.2);
-    const releaseTime = Math.min(0.12, durSec * 0.3);
-    const sustainPoint = Math.max(startTime + attackTime, startTime + durSec - releaseTime);
+    const voiceGain = note.s === 1 ? 0.20 : note.s === 2 ? 0.18 : 0.17;
+    const lowBoost = Math.max(1.0, 1.0 + (69 - note.m) * 0.035);
+    const baseGain = voiceGain * lowBoost;
+    const attackTime = isShort ? Math.min(0.04, durSec * 0.15) : Math.min(0.15, durSec * 0.2);
+    const noteEnd = startTime + durSec;
 
     gain.gain.setValueAtTime(0.0001, startTime);
     gain.gain.linearRampToValueAtTime(baseGain, startTime + attackTime);
-    gain.gain.setValueAtTime(baseGain, sustainPoint);
-    gain.gain.linearRampToValueAtTime(0.0001, startTime + durSec);
+    if (!isShort && durSec > attackTime + 0.1) {
+      gain.gain.linearRampToValueAtTime(baseGain * 0.88, noteEnd);
+    } else {
+      gain.gain.linearRampToValueAtTime(baseGain * 0.95, noteEnd);
+    }
+    gain.gain.linearRampToValueAtTime(0.0001, noteEnd + releaseTime);
 
     osc1.type = "sine";
     osc2.type = "sine";
     osc3.type = "triangle";
+
     osc1.frequency.setValueAtTime(freq, startTime);
-    osc2.frequency.setValueAtTime(freq * 1.002, startTime);
-    osc3.frequency.setValueAtTime(freq * 2, startTime);
-    osc3Gain.gain.setValueAtTime(0.08, startTime);
+    osc2.frequency.setValueAtTime(freq * 1.004, startTime);
+    osc3.frequency.setValueAtTime(freq * 2.001, startTime);
+
+    const octaveLevel = isShort ? 0.06 : (note.m < 65 ? 0.08 : 0.035);
+    osc3Gain.gain.setValueAtTime(octaveLevel, startTime);
 
     vibLfo.type = "sine";
-    vibLfo.frequency.setValueAtTime(5 + Math.random(), startTime);
-    vibGain.gain.setValueAtTime(freq * 0.006 * state.vibratoAmount, startTime);
+    vibLfo.frequency.setValueAtTime(5.2 + Math.random() * 1.0, startTime);
+    vibGain.gain.setValueAtTime(freq * 0.010 * state.vibratoAmount, startTime);
+
+    if (isShort) {
+      vibEnv.gain.setValueAtTime(0.3, startTime);
+    } else {
+      vibEnv.gain.setValueAtTime(0.0, startTime);
+      const vibDelay = Math.min(0.25, durSec * 0.25);
+      vibEnv.gain.setValueAtTime(0.0, startTime + vibDelay * 0.4);
+      vibEnv.gain.linearRampToValueAtTime(1.0, startTime + vibDelay);
+    }
+
     vibLfo.connect(vibGain);
-    vibGain.connect(osc1.frequency);
-    vibGain.connect(osc2.frequency);
+    vibGain.connect(vibEnv);
+    vibEnv.connect(osc1.frequency);
+    vibEnv.connect(osc2.frequency);
 
     tremLfo.type = "sine";
-    tremLfo.frequency.setValueAtTime(3.5, startTime);
-    tremGain.gain.setValueAtTime(0.06 * state.vibratoAmount, startTime);
+    tremLfo.frequency.setValueAtTime(4.0 + Math.random() * 0.5, startTime);
+    if (isShort) {
+      tremGain.gain.setValueAtTime(0.03, startTime);
+    } else {
+      const vibDelay = Math.min(0.25, durSec * 0.25);
+      tremGain.gain.setValueAtTime(0.0, startTime);
+      tremGain.gain.setValueAtTime(0.0, startTime + vibDelay * 0.4);
+      tremGain.gain.linearRampToValueAtTime(0.06 * state.vibratoAmount, startTime + vibDelay);
+    }
     tremLfo.connect(tremGain);
     tremGain.connect(gain.gain);
 
     filter.type = "lowpass";
-    filter.frequency.setValueAtTime(Math.min(freq * 4, 8000), startTime);
-    filter.Q.setValueAtTime(0.7, startTime);
+    const lowMult = note.m < 65 ? 1.5 : 1.0;
+    const baseCutoff = isShort ? Math.min(freq * 4, 7000) : Math.max(800, Math.min(freq * 3 * lowMult, 5000));
+    const peakCutoff = isShort ? Math.min(freq * 5, 8000) : Math.max(1200, Math.min(freq * 4 * lowMult, 7000));
+    filter.frequency.setValueAtTime(baseCutoff, startTime);
+    filter.frequency.linearRampToValueAtTime(peakCutoff, startTime + attackTime);
+    filter.frequency.setTargetAtTime(baseCutoff, noteEnd, 0.1);
+    filter.Q.setValueAtTime(isShort ? 0.7 : 1.0, startTime);
 
-    osc1.connect(filter);
+    osc1.connect(shaper);
+    shaper.connect(filter);
     osc2.connect(filter);
     osc3.connect(osc3Gain);
     osc3Gain.connect(filter);
@@ -277,15 +349,7 @@
 
     const voice = {
       osc1,
-      osc2,
-      osc3,
-      osc3Gain,
-      vibLfo,
-      vibGain,
-      tremLfo,
-      tremGain,
-      filter,
-      gain,
+      nodes: [osc1, osc2, osc3, osc3Gain, shaper, vibLfo, vibGain, vibEnv, tremLfo, tremGain, filter, gain],
     };
     activeVoices.add(voice);
 
@@ -311,15 +375,15 @@
 
     const now = audioCtx.currentTime;
     activeVoices.forEach((voice) => {
-      try {
-        voice.gain.gain.cancelScheduledValues(now);
-        voice.gain.gain.setTargetAtTime(0.0001, now, 0.01);
-      } catch (_) {
-        // noop
-      }
-      [voice.osc1, voice.osc2, voice.osc3, voice.vibLfo, voice.tremLfo].forEach((osc) => {
+      voice.nodes.forEach((node) => {
         try {
-          osc.stop(now + 0.04);
+          if (node instanceof GainNode) {
+            node.gain.cancelScheduledValues(now);
+            node.gain.linearRampToValueAtTime(0.0001, now + 0.03);
+          }
+          if (node instanceof OscillatorNode) {
+            node.stop(now + 0.05);
+          }
         } catch (_) {
           // noop
         }
